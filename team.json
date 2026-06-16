@@ -1,0 +1,316 @@
+[
+    {
+        "person_id": "zhihong_zhang",
+        "type": "teacher",
+        "photo": "photos/zhihong_zhang.jpg",
+        "name_zh": "张志宏",
+        "name_en": "Zhihong ZHANG",
+        "desc": "副教授/博士生导师\nzhihong@xmu.edu.cn"
+    },
+    {
+        "person_id": "guosheng_hu",
+        "type": "teacher",
+        "photo": "photos/guosheng_hu.jpg",
+        "name_zh": "胡国圣",
+        "name_en": "Guosheng HU",
+        "desc": "校外专家\n（University of Bristol）"
+    },
+    {
+        "person_id": "qinggang_zhang",
+        "type": "teacher",
+        "photo": "photos/qinggang_zhang.jpg",
+        "name_zh": "张庆刚",
+        "name_en": "Qinggang ZHANG",
+        "desc": "校外专家\n（吉林大学）"
+    },
+    {
+        "person_id": "jiangbing_mao",
+        "type": "phd",
+        "photo": "photos/jiangbing_mao.jpg",
+        "name_zh": "毛江冰",
+        "name_en": "Jiangbing MAO",
+        "desc": "2022级工程专项博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "jingwei_hu",
+        "type": "phd",
+        "photo": "photos/jingwei_hu.jpg",
+        "name_zh": "胡靖伟",
+        "name_en": "Jingwei HU",
+        "desc": "2023级学术型博士"
+    },
+    {
+        "person_id": "qichuan_liu",
+        "type": "phd",
+        "photo": "photos/qichuan_liu.jpg",
+        "name_zh": "刘启川",
+        "name_en": "Qichuan LIU",
+        "desc": "2023级硕博连读博士\n(与张庆刚老师联合培养)"
+    },
+    {
+        "person_id": "weining_shi",
+        "type": "phd",
+        "photo": "photos/weining_shi.jpg",
+        "name_zh": "石伟宁",
+        "name_en": "Weining SHI",
+        "desc": "2023级工程专项博士\n(与张庆刚老师联合培养)",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "chi_xu",
+        "type": "phd",
+        "photo": "photos/chi_xu.jpg",
+        "name_zh": "徐迟",
+        "name_en": "Chi XU",
+        "desc": "2024级工程专项博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "jie_zhang",
+        "type": "phd",
+        "photo": "photos/jie_zhang.jpg",
+        "name_zh": "张杰",
+        "name_en": "Jie ZHANG",
+        "desc": "2025级工程专项博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "yurou_zhang",
+        "type": "phd",
+        "photo": "photos/yurou_zhang.jpg",
+        "name_zh": "张雨柔",
+        "name_en": "Yurou ZHANG",
+        "desc": "2025级工程专项博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "yantong_zhu",
+        "type": "phd",
+        "photo": "photos/yantong_zhu.jpg",
+        "name_zh": "朱彦同",
+        "name_en": "Yantong ZHU",
+        "desc": "2025级工程专项博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "benyuan_chen",
+        "type": "master",
+        "photo": "photos/benyuan_chen.jpg",
+        "name_zh": "陈本源",
+        "name_en": "Benyuan CHEN",
+        "desc": "2023级专业型硕士"
+    },
+    {
+        "person_id": "zheng_fang",
+        "type": "master",
+        "photo": "photos/zheng_fang.jpg",
+        "name_zh": "方正",
+        "name_en": "Zheng FANG",
+        "desc": "2023级专业型硕士"
+    },
+    {
+        "person_id": "yuyuan_feng",
+        "type": "master",
+        "photo": "photos/yuyuan_feng.jpg",
+        "name_zh": "冯昱源",
+        "name_en": "Yuyuan FENG",
+        "desc": "2023级学术型硕士"
+    },
+    {
+        "person_id": "yueyang_liu",
+        "type": "master",
+        "photo": "photos/yueyang_liu.jpg",
+        "name_zh": "刘悦阳",
+        "name_en": "Yueyang LIU",
+        "desc": "2023级专业型硕士\n(与程俊老师联合培养)"
+    },
+    {
+        "person_id": "xinjie_peng",
+        "type": "master",
+        "photo": "photos/xinjie_peng.jpg",
+        "name_zh": "彭鑫杰",
+        "name_en": "Xinjie PENG",
+        "desc": "2023级专业型硕士"
+    },
+    {
+        "person_id": "hongxu_zhang",
+        "type": "master",
+        "photo": "photos/hongxu_zhang.jpg",
+        "name_zh": "张鸿旭",
+        "name_en": "Hongxu ZHANG",
+        "desc": "2023级工程专项硕士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "xuan_zhen",
+        "type": "master",
+        "photo": "photos/xuan_zhen.jpg",
+        "name_zh": "甄璇",
+        "name_en": "Xuan ZHEN",
+        "desc": "2023级工程专项硕士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "jiasong_chen",
+        "type": "master",
+        "photo": "photos/jiasong_chen.jpg",
+        "name_zh": "陈佳松",
+        "name_en": "Jiasong CHEN",
+        "desc": "2024级学术型硕士"
+    },
+    {
+        "person_id": "boyan_hou",
+        "type": "master",
+        "photo": "photos/boyan_hou.jpg",
+        "name_zh": "侯博严",
+        "name_en": "Boyan HOU",
+        "desc": "2024级专业型硕士"
+    },
+    {
+        "person_id": "kai_xie",
+        "type": "master",
+        "photo": "photos/kai_xie.jpg",
+        "name_zh": "谢锴",
+        "name_en": "Kai XIE",
+        "desc": "2024级专业型硕士\n(与程俊老师联合培养)"
+    },
+    {
+        "person_id": "chentao_zhang",
+        "type": "master",
+        "photo": "photos/chentao_zhang.jpg",
+        "name_zh": "张辰涛",
+        "name_en": "Chentao ZHANG",
+        "desc": "2024级工程专项硕士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "gefei_zhang",
+        "type": "master",
+        "photo": "photos/gefei_zhang.jpg",
+        "name_zh": "张舸飞",
+        "name_en": "Gefei ZHANG",
+        "desc": "2024级工程专项硕士",
+        "tag": "中国电科"
+    },
+    {
+        "person_id": "chenfeng_zheng",
+        "type": "master",
+        "photo": "photos/chenfeng_zheng.jpg",
+        "name_zh": "郑晨枫",
+        "name_en": "Chenfeng ZHENG",
+        "desc": "2024级专业型硕士"
+    },
+    {
+        "person_id": "yuxuan_hu",
+        "type": "master",
+        "photo": "photos/yuxuan_hu.jpg",
+        "name_zh": "胡雨璇",
+        "name_en": "Yuxuan HU",
+        "desc": "2025级工程专项硕士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "ri_huang",
+        "type": "master",
+        "photo": "photos/ri_huang.jpg",
+        "name_zh": "黄日",
+        "name_en": "Ri HUANG",
+        "desc": "2025级专业型硕士\n(与程俊老师联合培养)"
+    },
+    {
+        "person_id": "zhisen_wen",
+        "type": "master",
+        "photo": "photos/zhisen_wen.jpg",
+        "name_zh": "温志森",
+        "name_en": "Zhisen WEN",
+        "desc": "2025级学术型硕士"
+    },
+    {
+        "person_id": "tianke_xiang",
+        "type": "master",
+        "photo": "photos/tianke_xiang.jpg",
+        "name_zh": "向天科",
+        "name_en": "Tianke XIANG",
+        "desc": "2025级学术型硕士"
+    },
+    {
+        "person_id": "chaobin_yang",
+        "type": "master",
+        "photo": "photos/chaobin_yang.jpg",
+        "name_zh": "杨朝斌",
+        "name_en": "Chaobin YANG",
+        "desc": "2025级学术型硕士"
+    },
+    {
+        "person_id": "jingyi_yang",
+        "type": "master",
+        "photo": "photos/jingyi_yang.jpg",
+        "name_zh": "杨婧怡",
+        "name_en": "Jingyi YANG",
+        "desc": "2025级专业型硕士"
+    },
+    {
+        "person_id": "shenglong_liu",
+        "type": "phd_pt",
+        "photo": "photos/shenglong_liu.jpg",
+        "name_zh": "刘圣龙",
+        "name_en": "Shenglong LIU",
+        "desc": "2022级非全日制博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "yunxiao_wang",
+        "type": "phd_pt",
+        "photo": "photos/yunxiao_wang.jpg",
+        "name_zh": "王云霄",
+        "name_en": "Yunxiao WANG",
+        "desc": "2023级非全日制博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "nanfang_li",
+        "type": "phd_pt",
+        "photo": "photos/nanfang_li.jpg",
+        "name_zh": "李楠芳",
+        "name_en": "Nanfang LI",
+        "desc": "2024级非全日制博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "yubo_liu",
+        "type": "phd_pt",
+        "photo": "photos/yubo_liu.jpg",
+        "name_zh": "刘育博",
+        "name_en": "Yubo LIU",
+        "desc": "2024级非全日制博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "hongyu_zhu",
+        "type": "phd_pt",
+        "photo": "photos/hongyu_zhu.jpg",
+        "name_zh": "朱宏宇",
+        "name_en": "Hongyu ZHU",
+        "desc": "2024级非全日制博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "wen_ji",
+        "type": "phd_pt",
+        "photo": "photos/wen_ji.jpg",
+        "name_zh": "纪文",
+        "name_en": "Wen JI",
+        "desc": "2025级非全日制博士",
+        "tag": "国家电网"
+    },
+    {
+        "person_id": "libin_wang",
+        "type": "phd_pt",
+        "photo": "photos/libin_wang.jpg",
+        "name_zh": "王利斌",
+        "name_en": "Libin WANG",
+        "desc": "2025级非全日制博士",
+        "tag": "国家电网"
+    }
+]

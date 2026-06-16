@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最新资讯 - 能源智能计算课题组@XMU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        labPrimary: '#1e40af',
+                        labSecondary: '#3b82f6',
+                        labNeutral: '#f3f4f6',
+                    },
+                    // 全局 Georgia 字体
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans text-gray-800 bg-white min-h-screen flex flex-col">
+    <!-- 顶部导航栏（无修改） -->
+    <nav class="fixed top-0 left-0 w-full bg-gradient-to-b from-labPrimary to-blue-900 text-white shadow-md z-50 h-20">
+        <div class="container mx-auto px-4 h-full max-w-6xl">
+            <div class="flex justify-between items-center h-full">
+                <div class="text-3xl flex items-center">
+                    <!-- 校徽图片 -->
+                    <img src="xmu-logo.png" class="h-10 w-auto">
+
+                    <!-- 白色竖线分割符（核心） -->
+                    <div class="h-8 w-0.5 bg-white mx-4"></div>
+
+                    <!-- 文字+闪电图标 -->
+                    <span class="text-lg text-center mt-1" style="line-height: 1.3;">能源智能计算课题组 (ENIC Lab)<br><span class="text-base" style="letter-spacing: 0.05em;">ENergy Intelligent Computing Lab</span></span>
+                </div>
+                <!-- 关键1：去掉所有间隙，让LI紧密相连 -->
+                <ul class="flex h-full text-lg">
+                    <li class="h-full">
+                        <a href="index.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            首页
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="news.html"
+                            class="h-full flex items-center justify-center px-4 bg-labSecondary/60 font-bold transition-all duration-200">
+                            最新资讯
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="team.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            学术团队
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="paper.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            科研成果
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="app.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            场景应用
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="join.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            加入我们
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 顶部占位：因导航栏固定，避免内容被遮挡 -->
+    <div class="h-20"></div>
+
+    <!-- 新闻列表核心区域：新增分页容器 -->
+    <section class="py-10 flex-grow mb-10">
+
+        <h2
+            class="text-3xl font-bold text-gray-800 pb-2 mb-10 text-center flex items-center justify-center gap-3 mt-10 mb-10">
+            <!-- 左侧横线 -->
+            <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+
+            <!-- 图标 + 中文 + 英文 垂直排列 -->
+            <div class="flex flex-col items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-bell text-labPrimary"></i>
+                    <span>最新资讯</span>
+                </div>
+                <span class="text-lg font-normal text-gray-500 mt-1"
+                    style="font-family: Arial, Helvetica, sans-serif;letter-spacing: 0.1em;">LATEST NEWS AND
+                    EVENTS</span>
+            </div>
+
+            <!-- 右侧横线 -->
+            <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+        </h2>
+
+        <div class="container mx-auto px-4 max-w-6xl">
+            <!-- 新闻列表 -->
+            <div id="news-list-container" class="space-y-8">
+                <div class="text-center text-gray-500 py-10">加载新闻列表中...</div>
+            </div>
+            <!-- 分页控件容器（新增） -->
+            <div id="pagination-container" class="mt-10 flex justify-center items-center space-x-2">
+                <!-- 分页控件将通过JS渲染 -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2026 厦门大学能源智能计算课题组 版权所有</p>
+            <p class="text-sm text-gray-400 mt-2">
+                <i class="fa-solid fa-location-dot mr-2"></i>通讯地址：厦门大学（翔安校区）西部片区信息学院5号楼
+                <span class="mx-2">|</span>
+                <i class="fa-solid fa-envelope mr-2"></i>加入我们：zhihong@xmu.edu.cn（张志宏老师）
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 解析Markdown的Frontmatter（无修改）
+        function parseFrontmatter(markdownContent) {
+            const frontmatterRegex = /^---\s*([\s\S]*?)\s*---/;
+            const match = frontmatterRegex.exec(markdownContent);
+            if (!match) return { frontmatter: {}, content: markdownContent };
+
+            const frontmatterStr = match[1];
+            const content = markdownContent.replace(frontmatterRegex, '').trim();
+            const frontmatter = {};
+
+            frontmatterStr.split('\n').forEach(line => {
+                const [key, ...valueParts] = line.split(':').map(item => item.trim());
+                if (key && valueParts.length) {
+                    frontmatter[key] = valueParts.join(':');
+                }
+            });
+
+            return { frontmatter, content };
+        }
+
+        // ====================== 分页核心变量（新增） ======================
+        let currentPage = 1; // 当前页码，默认第1页
+        const pageSize = 8; // 每页固定10条
+        let allNewsData = []; // 存储所有新闻的原始数据
+        let totalPages = 0; // 总页数
+
+        // ====================== 渲染当前页新闻（新增） ======================
+        function renderCurrentPageNews() {
+            const container = document.getElementById('news-list-container');
+
+            // 计算当前页的新闻数据范围
+            const startIndex = (currentPage - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const currentPageNews = allNewsData.slice(startIndex, endIndex);
+
+            // 无数据处理
+            if (allNewsData.length === 0) {
+                container.innerHTML = `<div class="text-center text-gray-500 py-10">暂无新闻</div>`;
+                return;
+            }
+            // 当前页无数据（如页码超出范围）
+            if (currentPageNews.length === 0) {
+                container.innerHTML = `<div class="text-center text-gray-500 py-10">当前页无新闻</div>`;
+                return;
+            }
+
+            // 拼接当前页新闻HTML
+            let newsHtml = '';
+            currentPageNews.forEach(item => {
+                const { news_id, frontmatter } = item;
+                newsHtml += `
+                            <div class="bg-white rounded-lg hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <!-- 新闻图片 -->
+                                    <div class="md:col-span-1 p-3">
+                                        <a href="news-detail.html?news_id=${news_id}" target="_blank">
+                                            <img 
+                                                src="news/${news_id}/featured.jpg" 
+                                                alt="${frontmatter.title || '新闻图片'}"
+                                                class="w-full h-48 object-cover"
+                                                onerror="this.src='https://via.placeholder.com/400x300?text=暂无图片'"
+                                            >
+                                        </a>
+                                    </div>
+                                    <!-- 新闻信息 -->
+                                    <div class="md:col-span-2 p-6">
+                                        <h3 class="text-gray-500 text-lg">
+                                            ${frontmatter.date || '未知日期'} · ${frontmatter.tag || '未知标签'}
+                                        </h3>
+                                        <h3 class="text-2xl text-labPrimary mb-3 mt-3">
+                                            <a href="news-detail.html?news_id=${news_id}" class="hover:text-labSecondary transition-colors font-bold" target="_blank">
+                                                ${frontmatter.title || '无标题新闻'}
+                                            </a>
+                                        </h3>
+                                        <p class="text-gray-700 text-lg text-justify">${frontmatter.abstract || '无摘要'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                `;
+            });
+
+            container.innerHTML = newsHtml;
+        }
+
+        // ====================== 渲染分页控件（新增） ======================
+        function renderPagination() {
+            const container = document.getElementById('pagination-container');
+
+            // 无新闻时隐藏分页控件
+            if (allNewsData.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            // 计算总页数（向上取整）
+            totalPages = Math.ceil(allNewsData.length / pageSize);
+
+            // 分页控件HTML模板
+            let paginationHtml = '';
+
+            // 上一页按钮（禁用状态：当前页为1时）
+            paginationHtml += `
+                <button 
+                    id="prev-page" 
+                    class="px-3 py-2 rounded ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-labSecondary hover:text-white transition-colors'}"
+                    ${currentPage === 1 ? 'disabled' : ''}
+                >
+                    <i class="fa-solid fa-chevron-left"></i> 上一页
+                </button>
+            `;
+
+            // 页码按钮（最多显示5个页码，避免过多）
+            const startPage = Math.max(1, currentPage - 2);
+            const endPage = Math.min(totalPages, currentPage + 2);
+
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHtml += `
+                    <button 
+                        class="px-3 py-2 rounded ${i === currentPage ? 'bg-labSecondary text-white font-bold' : 'bg-white text-gray-800 hover:bg-labSecondary/10 transition-colors'}"
+                        data-page="${i}"
+                    >
+                        ${i}
+                    </button>
+                `;
+            }
+
+            // 下一页按钮（禁用状态：当前页为最后一页时）
+            paginationHtml += `
+                <button 
+                    id="next-page" 
+                    class="px-3 py-2 rounded ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-white text-gray-700 hover:bg-labSecondary hover:text-white transition-colors'}"
+                    ${currentPage === totalPages ? 'disabled' : ''}
+                >
+                    下一页 <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            `;
+
+            // 页码信息
+            paginationHtml += `
+                <span class="ml-4 text-gray-600 text-sm">
+                    第 ${currentPage} 页 / 共 ${totalPages} 页 (总 ${allNewsData.length} 条)
+                </span>
+            `;
+
+            container.innerHTML = paginationHtml;
+
+            // 绑定分页按钮事件
+            bindPaginationEvents();
+        }
+
+        // ====================== 绑定分页按钮事件（新增） ======================
+        function bindPaginationEvents() {
+            // 上一页
+            document.getElementById('prev-page')?.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderCurrentPageNews();
+                    renderPagination();
+                }
+            });
+
+            // 下一页
+            document.getElementById('next-page')?.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderCurrentPageNews();
+                    renderPagination();
+                }
+            });
+
+            // 页码按钮
+            document.querySelectorAll('[data-page]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentPage = parseInt(btn.dataset.page);
+                    renderCurrentPageNews();
+                    renderPagination();
+                });
+            });
+        }
+
+        // ====================== 加载所有新闻数据（修改原有loadNewsList） ======================
+        async function loadAllNewsData() {
+            const container = document.getElementById('news-list-container');
+            try {
+                // 1. 加载新闻文件夹列表
+                const listRes = await fetch('news/news-list.json');
+                if (!listRes.ok) throw new Error('加载新闻列表配置失败');
+                const newsFolders = await listRes.json();
+
+                // 2. 遍历加载所有新闻数据
+                allNewsData = [];
+                for (const news_id of newsFolders) {
+                    try {
+                        const mdRes = await fetch(`news/${news_id}/index.md`);
+                        if (!mdRes.ok) continue;
+                        const mdContent = await mdRes.text();
+                        const { frontmatter } = parseFrontmatter(mdContent);
+                        // 存储新闻原始数据（文件夹名 + frontmatter）
+                        allNewsData.push({ news_id, frontmatter });
+                    } catch (e) {
+                        console.warn(`加载新闻 ${news_id} 失败：`, e);
+                        continue;
+                    }
+                }
+
+                // 3. 渲染当前页新闻和分页控件
+                renderCurrentPageNews();
+                renderPagination();
+
+            } catch (error) {
+                console.error('加载新闻失败：', error);
+                container.innerHTML = `<div class="text-center text-red-500 py-10">新闻加载失败</div>`;
+            }
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadAllNewsData);
+    </script>
+</body>
+
+</html>

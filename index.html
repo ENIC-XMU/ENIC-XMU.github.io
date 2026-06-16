@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 视口设置：适配移动端，确保响应式生效 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 能源智能计算课题组@XMU</title>
+    <!-- 引入TailwindCSS CDN，无需本地配置，初学者直接使用 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标库，用于导航/模块的装饰图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 自定义Tailwind配置（可选）：添加实验室主题色，方便统一管理 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        labPrimary: '#1e40af',
+                        labSecondary: '#3b82f6',
+                        labNeutral: '#f3f4f6',
+                    },
+                    // 全局 Georgia 字体
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .typing-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            /* margin: 1px 0; */
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 0.05em;
+            /* 关键：固定行高 + 最小高度，防止打字时撑开页面 */
+            line-height: 1;
+            min-height: 36px;
+            vertical-align: middle;
+        }
+
+        /* 光标改成行内块，不额外撑高 */
+        .typing-cursor {
+            display: inline-block;
+            width: 1.5px;
+            height: 1.1em;
+            background-color: #9ca3af;
+            animation: blink 0.5s step-end infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .typing-done .typing-cursor {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-white">
+    <!-- 顶部导航栏（无修改） -->
+    <nav class="fixed top-0 left-0 w-full bg-gradient-to-b from-labPrimary to-blue-900 text-white shadow-md z-50 h-20">
+        <div class="container mx-auto px-4 h-full max-w-6xl">
+            <div class="flex justify-between items-center h-full">
+                <div class="text-3xl flex items-center">
+                    <!-- 校徽图片 -->
+                    <img src="xmu-logo.png" class="h-10 w-auto">
+
+                    <!-- 白色竖线分割符（核心） -->
+                    <div class="h-8 w-0.5 bg-white mx-4"></div>
+
+                    <!-- 文字+闪电图标 -->
+                    <span class="text-lg text-center mt-1" style="line-height: 1.3;">能源智能计算课题组 (ENIC Lab)<br><span class="text-base" style="letter-spacing: 0.05em;">ENergy Intelligent Computing Lab</span></span>
+                </div>
+                <!-- 关键1：去掉所有间隙，让LI紧密相连 -->
+                <ul class="flex h-full text-lg">
+                    <li class="h-full">
+                        <a href="index.html"
+                            class="h-full flex items-center justify-center px-4 bg-labSecondary/60 font-bold transition-all duration-200">
+                            首页
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="news.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            最新资讯
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="team.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            学术团队
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="paper.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            科研成果
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="app.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            场景应用
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="join.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            加入我们
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 顶部占位：因导航栏固定，避免内容被遮挡 -->
+    <div class="h-20"></div>
+
+
+    <!-- ====================================== -->
+    <!-- 3. 实验室介绍区域 -->
+    <!-- ====================================== -->
+    <section style="font-family: Arial, Helvetica, sans-serif;">
+        <div class="container mx-auto px-4 max-w-6xl mb-10 mt-20">
+            <div class="text-center">
+                <!-- 中文名称：text-3xl=字体大小3rem，font-bold=加粗 -->
+                <h1 class="text-5xl mb-4">
+                    能源智能计算课题组
+                </h1>
+                <div class="text-2xl text-gray-400" style="letter-spacing: 0.1em;">
+                    <span class="text-labPrimary">EN</span>ERGY
+                    <span class="text-labPrimary">I</span>NTELLIGENT
+                    AND
+                    <span class="text-labPrimary">C</span>OMPUTING LAB
+                </div>
+                <!-- <div class="typing-line text-xl text-gray-400" style="letter-spacing: 0.1em;">
+                    <span id="text-cn"></span><span class="typing-cursor"></span>
+                </div>
+                <div class="typing-line text-xl text-gray-400" style="letter-spacing: 0.1em;">
+                    <span id="text-en"></span><span class="typing-cursor"></span>
+                </div> -->
+            </div>
+
+
+            <div class="flex flex-col md:flex-row items-center gap-8 mt-10">
+                <div class="w-full md:w-[500px] shrink-0">
+                    <div class="relative bg-labPrimary/10 flex items-center justify-center">
+                        <img src="bd2aa66ead5c9df1763464e12c7d4a88.jpg" alt="" class="w-full">
+                        <p
+                            class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center py-2 px-3 text-base">
+                            ENIC Lab 2026年新年团建（2026年1月31日摄）
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex-1">
+                    <p class="leading-relaxed text-gray-700 text-xl text-justify" style="line-height: 1.8;">
+                        厦门大学能源智能计算课题组（ENIC Lab）由<span class="font-bold">张志宏副教授</span>领导，课题组包含副教授1名，校外专家2名，在读博士生15名、硕士生19名。团队依托厦门大学特色化示范性软件学院，联合嘉庚创新实验室和储能领军企业 <img src="宁德时代.svg"
+                            class="inline h-3.5 -translate-y-1">（宁德时代）、<svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 708.66 233.76" class="inline-block"
+                            style="height: 1.5em; transform: translateY(-2px);">
+                            <path
+                                d="M121.51,287.93H103.75L91.57,264l-3.08,2.72-6.65,21.18H66.61l20.44-65h15.21l-8.6,27.35,29.55-27.35h15.1l-35,30.43,18.22,34.61Zm519.65,86.81H610.47v34.71H600.24V387.36l-27.11,22.27L573,397.55,600.24,375v-.23H571.76v-7.58h28.48v-7.89l10.23-4.47v12.36h17.76l-2.68-6.47h9.82l5.79,14.05Zm-289-72.84s-43.93,16.76-82.66,24.78c-49.29,10.2-99,9.9-100.14,9.76l-16.65,14c53.56-1.55,135.64-17,199.45-48.57Zm-36.42,29.57c-78.52,38.57-152,42.9-195.75,46.37l18.48-15.54c19.48-.39,105.94-1.73,177.27-30.83ZM101.51,393.2l-25,21c47.47-4.27,131-12.83,201-51.89-75.24,26.81-148.58,29.5-176,30.9ZM378.63,292.81s187.57-82.54,369.11-89.12l27.54-22.93c-39,3.9-203,12.09-396.65,112.05Zm316-44.16C511.51,246.9,333,325.14,333,325.14c158-84.07,349.14-100.95,393.78-103.53l-32.19,27Zm-393.85,107v.05c77.94-32.61,233.57-66.27,331.06-54.07l40.89-34.33c-34.05-.82-202.78,4.18-372,88.35Zm87.45,22.79c0,.9-.46,1.66-2,1.66h-10l5.71,15.39h7.26V358.28l9.92-4.45v41.62h3.65l-3.65,6.89v7.11H389.2v-6.93H362.29v-7.07h9.88l-6-16a1.83,1.83,0,0,1-.26-1.05h0c0-.91.33-1.66,1.88-1.66h9.66l-5.31-15.83h10.26L388,377.6a1.76,1.76,0,0,1,.16.8Zm159.37,14.4,16.16,10.57v11.15L538.9,398.21l-18.43,11.52-.18-9.73,23.52-14.85h-24v-7.88h15.49V369.9H519.65v-6.59h15.69v-4.77l9.84-4.23v9h15.7l-3.55,6.59H545.18v7.37H558l-.06,9.07-10.33,6.46Zm-45.91-33.53,9.43-4.8v8.95h6.48v6.91h-6.48v12l6.48-2.71.15,7.89-6.63,2.78v19.18H495.8l-2-4.8h7.85V394.23l-11,4.61-.15-8,11.13-4.64V370.33h-9.71v-6.91h9.71v-4.15Zm-49,51.13H442v-7.55H410.68v-7.38h32.25l9.74-2.2v2.2H482l-4.76,7.38H452.67v7.55Zm-.58-28h30.62l-5.5,7H442V360.1l10-6.36v14.85l23.92-9-.14,8.64-23.78,9v5.18Zm-29.27,7-9.68,4c0-9.52-.1-18.69-.1-28.08l26.54-11.77-.22,9.69-16.54,7.05V389.4Zm190.75-12.21-.15,9.82,27.28,17.8-.11-10.34-27-17.28ZM360.13,387.51l-8.92-6.68h12.93v-7.08h-13v-7.86l13.08-2.5.21-8-22.48,4.74c0,4.52,0,9.05,0,13.61H309.68v7.08H341.9v.76l-33,15v8.92l33-14.6v18.75l9.21.07V389.92l9,6.92v-9.33Zm16.48-109.35a36.59,36.59,0,0,1-11.54,7.78,40.19,40.19,0,0,1-16.54,3.1q-13.25,0-18.25-8.18t-.1-23.84l1.11-3.52a45.77,45.77,0,0,1,15.49-22.75A41,41,0,0,1,373,222a33.7,33.7,0,0,1,9.21,1,20,20,0,0,1,5.08,2L384,235.47a48.08,48.08,0,0,0-5.1-2.23,21.86,21.86,0,0,0-7.72-1.19,22.65,22.65,0,0,0-14.68,5.37c-4.4,3.59-7.92,9.52-10.5,17.8l-.32.92q-4.08,13-1.78,17.94c1.51,3.32,4.51,5,9,5a20.74,20.74,0,0,0,7.1-1.22,12.32,12.32,0,0,0,4.92-2.84l4.19-13.38H358.74l2.72-8.64h23.06l-7.91,25.17Zm-60.69,9.77,20.43-65H325.56l-12.09,38.53-20-38.53h-8.1l-20.42,65h10.77l12.81-40.76,20.89,40.76Zm-69.48-13.46a14.18,14.18,0,0,1-11.14,5.4c-5.3,0-8.15-1.66-8.56-5s.81-9.49,3.61-18.46l.5-1.56q4.17-13.35,8.23-18.52c2.72-3.47,6.56-5.18,11.54-5.18,5.36,0,8.16,1.92,8.37,5.81s-.94,9.84-3.48,17.89l-.54,1.73c-2.61,8.35-5.47,14.32-8.53,17.9ZM271,253.94l-1.09,3.53q-4.84,15.38-15,23.48A35.2,35.2,0,0,1,232.42,289q-12.3,0-17.37-8.09t-.32-23.26l1.18-3.75a50.62,50.62,0,0,1,14.35-23A34.06,34.06,0,0,1,253.88,222q13.39,0,17.44,9.05c2.69,6,2.59,13.67-.33,22.92Zm-68.88,34H168.2l20.41-65h15.22l-17.39,55.38h25l-9.3,9.66Zm-41.22,0,8.4-9.66h-27.6l5.76-18.33h15.29l7.85-9.88h-20L156,232.65h20.5l8.35-9.76h-41l-20.43,65Z"
+                                transform="translate(-66.61 -180.76)" style="fill: #e60012; fill-rule: evenodd;"></path>
+                        </svg>（科华数能）以及 <img src="国家电网.jpeg"
+                            class="inline h-8 -translate-y-0.5">（国家电网），紧密围绕国家对智慧能源建设和创新应用的重大需求，以人工智能、电力系统、电化学等交叉学科为基础，主攻储能电池电解液性能预测及配方优化、储能电池系统智能化管控、能源互联网优化调度、电力设备运检处置推理、电力网络信息安全等技术创新。相关成果发表在ICML、NeurIPS、ICLR、ACL、WWW、SIGIR等国际顶级会议或期刊。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-8 bg-[#fafafa]">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl font-bold text-gray-800 pb-2 mb-6 mt-6 text-center flex items-center justify-center gap-3">
+                <!-- 左侧横线 -->
+                <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+
+                <!-- 图标 + 中文 + 英文 垂直排列 -->
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-compass text-labPrimary"></i>
+                        <span>研究方向</span>
+                    </div>
+                    <span class="text-lg font-normal text-gray-500 mt-1"
+                        style="font-family: Arial, Helvetica, sans-serif;letter-spacing: 0.1em;">RESEARCH
+                        DIRECTIONS</span>
+                </div>
+
+                <!-- 右侧横线 -->
+                <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+            </h2>
+            <!-- 网格布局：移动端1列，平板2列，PC端3列，gap-6=间距 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- 研究方向1：卡片样式，shadow=阴影，rounded-lg=圆角，hover:shadow-lg=悬停放大阴影 -->
+                <div class="p-5">
+                    <h3 class="text-2xl font-bold">图神经网络与图表示学习
+                    </h3>
+                    <span class="inline-block text-sm font-bold text-purple-700 bg-purple-100 rounded px-2 py-1 mt-2 mb-2"
+        style="letter-spacing: 0.1em;">GRAPH NEURAL NETWORKS</span>
+    
+                    <p class="text-xl text-justify mt-2" style="line-height: 1.8;">
+                        深耕图表示学习核心理论体系，开展<strong>拓扑结构建模、节点语义表征、关联分析挖掘、时空演化计算</strong>等研究，致力于<strong>理论可信、精准高效、鲁棒稳定</strong>地挖掘拓扑数据的内在价值，更好地赋能相关业务场景应用。
+                    </p>
+                </div>
+                <!-- 研究方向2 -->
+                <div class="p-5">
+                    <h3 class="text-2xl font-bold">检索增强生成与智能体</h3>
+                    <span class="inline-block text-sm font-bold text-blue-700 bg-blue-100 rounded px-2 py-1 mt-2 mb-2"
+        style="letter-spacing: 0.1em;">RETRIEVAL-AUGMENTED
+                        AI</span>
+                    <p class="text-xl text-justify mt-2" style="line-height: 1.8;">
+                        聚焦可信检索智能体关键技术，围绕<strong>知识、记忆、检索、推理</strong>等核心组件开展深入研究，致力于让智能体以<strong>人类易懂、用户友好、决策透明</strong>的形式利用知识、经验和工具，提高其在业务场景中的可用性和可靠性。
+                    </p>
+                </div>
+                <!-- 研究方向3 -->
+                <div class="p-5">
+                    <h3 class="text-2xl font-bold">人工智能驱动的科学</h3>
+                    <span class="inline-block text-sm font-bold text-green-700 bg-green-100 rounded px-2 py-1 mt-2 mb-2"
+        style="letter-spacing: 0.1em;">AI FOR SCIENCE</span>
+                    <p class="text-xl text-justify mt-2" style="line-height: 1.8;">
+                        面向复杂科学与工程系统场景，系统性刻画<strong>多物理场耦合与演化过程</strong>，致力于构建<strong>融合物理机理约束、数据驱动学习与不确定性建模</strong>的统一人工智能技术体系，提升模型的可解释性、泛化能力与决策可靠性。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================== -->
+    <!-- 5. 最新新闻区域 -->
+    <!-- ====================================== -->
+    <section class="py-8">
+        <div class="container mx-auto px-4 max-w-6xl">
+
+            <h2 class="text-3xl font-bold text-gray-800 pb-2 mb-6 mt-6 text-center flex items-center justify-center gap-3">
+                <!-- 左侧横线 -->
+                <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+
+                <!-- 图标 + 中文 + 英文 垂直排列 -->
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bell text-labPrimary"></i>
+                        <span>最新资讯</span>
+                    </div>
+                    <span class="text-lg font-normal text-gray-500 mt-1"
+                        style="font-family: Arial, Helvetica, sans-serif;letter-spacing: 0.1em;">LATEST NEWS AND
+                        EVENTS</span>
+                </div>
+
+                <!-- 右侧横线 -->
+                <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+            </h2>
+
+
+
+            <!-- 新闻卡片容器：保持单列竖排 -->
+            <div id="latest-news-container" class="grid grid-cols-1 gap-6">
+                <div class="text-center text-gray-500 py-10">加载最新新闻中...</div>
+            </div>
+
+            <a href="news.html"
+                class="text-labPrimary hover:text-labSecondary hover:underline transition-colors duration-300 inline-flex items-center mt-8 mb-8 text-xl font-bold">
+                <i class="fa-solid fa-list mr-2"></i>查看所有新闻
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2026 厦门大学能源智能计算课题组 版权所有</p>
+            <p class="text-sm text-gray-400 mt-2">
+                <i class="fa-solid fa-location-dot mr-2"></i>通讯地址：厦门大学（翔安校区）西部片区信息学院5号楼
+                <span class="mx-2">|</span>
+                <i class="fa-solid fa-envelope mr-2"></i>加入我们：zhihong@xmu.edu.cn（张志宏老师）
+            </p>
+        </div>
+    </footer>
+
+    <!-- 动态加载最新新闻 -->
+    <script>
+        // 解析 Markdown 头部信息（和新闻页共用逻辑）
+        function parseFrontmatter(markdownContent) {
+            const frontmatterRegex = /^---\s*([\s\S]*?)\s*---/;
+            const match = frontmatterRegex.exec(markdownContent);
+            if (!match) return { frontmatter: {}, content: markdownContent };
+
+            const frontmatterStr = match[1];
+            const content = markdownContent.replace(frontmatterRegex, '').trim();
+            const frontmatter = {};
+
+            frontmatterStr.split('\n').forEach(line => {
+                const [key, ...valueParts] = line.split(':').map(item => item.trim());
+                if (key && valueParts.length) {
+                    frontmatter[key] = valueParts.join(':');
+                }
+            });
+
+            return { frontmatter, content };
+        }
+
+        // 加载首页最新5条新闻
+        async function loadLatestNews() {
+            const container = document.getElementById('latest-news-container');
+            try {
+                // 1. 读取新闻目录配置
+                const res = await fetch('news/news-list.json');
+                if (!res.ok) throw new Error('加载新闻列表失败');
+                const newsFolders = await res.json();
+
+                // 2. 只取最新 5 条
+                // 先复制数组再反转，避免修改原数组
+                const reversedFolders = [...newsFolders];
+                // 取反转后的前5条（即最新添加的5条）
+                const top5Folders = reversedFolders.slice(0, 5);
+
+                let html = '';
+                for (const news_id of top5Folders) {
+                    try {
+                        // 3. 读取每篇新闻的标题、摘要
+                        const mdRes = await fetch(`news/${news_id}/index.md`);
+                        if (!mdRes.ok) continue;
+                        const mdContent = await mdRes.text();
+                        const { frontmatter } = parseFrontmatter(mdContent);
+
+                        // 4. 拼接新闻卡片
+                        html += `
+                            <div class="bg-white rounded-lg hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <!-- 新闻图片 -->
+                                    <div class="md:col-span-1 p-3">
+                                        <a href="news-detail.html?news_id=${news_id}" target="_blank">
+                                            <img 
+                                                src="news/${news_id}/featured.jpg" 
+                                                alt="${frontmatter.title || '新闻图片'}"
+                                                class="w-full h-48 object-cover"
+                                                onerror="this.src='https://via.placeholder.com/400x300?text=暂无图片'"
+                                            >
+                                        </a>
+                                    </div>
+                                    <!-- 新闻信息 -->
+                                    <div class="md:col-span-2 p-6">
+                                        <h3 class="text-gray-500 text-lg">
+                                            ${frontmatter.date || '未知日期'} · ${frontmatter.tag || '未知标签'}
+                                        </h3>
+                                        <h3 class="text-2xl text-labPrimary mb-3 mt-2">
+                                            <a href="news-detail.html?news_id=${news_id}" class="hover:text-labSecondary transition-colors font-bold" target="_blank">
+                                                ${frontmatter.title || '无标题新闻'}
+                                            </a>
+                                        </h3>
+                                        <p class="text-gray-700 text-lg text-justify">${frontmatter.abstract || '无摘要'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } catch (e) {
+                        console.warn('单条新闻加载失败', e);
+                    }
+                }
+
+                container.innerHTML = html;
+            } catch (error) {
+                container.innerHTML = `<div class="text-center text-red-500 py-10">新闻加载失败</div>`;
+                console.error(error);
+            }
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadLatestNews);
+    </script>
+    <script>
+        const cnText = "为每一个真实世界场景提供可靠、可信、可用的人工智能.";
+        const enText = "Reliable, Trustworthy, Practical AI for Every Real-World Scenario.";
+
+        // 分别设置打字速度（数字越大越慢）
+        const cnTypeSpeed = 80;  // 中文速度
+        const enTypeSpeed = 50;  // 英文速度
+        const delayBeforeEn = 500;
+
+        function typeWriter(elementId, text, speed, callback) {
+            const el = document.getElementById(elementId);
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                } else {
+                    el.parentElement.classList.add("typing-done");
+                    callback?.();
+                }
+            }
+            typing();
+        }
+
+        // 中文用中文速度，打完延时后英文用英文速度
+        typeWriter("text-cn", cnText, cnTypeSpeed, () => {
+            setTimeout(() => {
+                typeWriter("text-en", enText, enTypeSpeed);
+            }, delayBeforeEn);
+        });
+    </script>
+</body>
+
+</html>

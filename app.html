@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>场景应用 - 能源智能计算课题组@XMU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        labPrimary: '#1e40af',
+                        labSecondary: '#3b82f6',
+                        labNeutral: '#f3f4f6',
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- 导航栏（和你全站一致） -->
+    <nav class="fixed top-0 left-0 w-full bg-gradient-to-b from-labPrimary to-blue-900 text-white shadow-md z-50 h-20">
+        <div class="container mx-auto px-4 h-full max-w-6xl">
+            <div class="flex justify-between items-center h-full">
+                <div class="text-3xl flex items-center">
+                    <img src="xmu-logo.png" class="h-10 w-auto">
+                    <div class="h-8 w-0.5 bg-white mx-4"></div>
+                    <span class="text-lg text-center mt-1" style="line-height: 1.3;">能源智能计算课题组 (ENIC Lab)<br><span class="text-base" style="letter-spacing: 0.05em;">ENergy Intelligent Computing Lab</span></span>
+                </div>
+                <ul class="flex h-full text-lg">
+                    <li class="h-full">
+                        <a href="index.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">首页</a>
+                    </li>
+                    <li class="h-full">
+                        <a href="news.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">最新资讯</a>
+                    </li>
+                    <li class="h-full">
+                        <a href="team.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">学术团队</a>
+                    </li>
+                    <li class="h-full">
+                        <a href="paper.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">科研成果</a>
+                    </li>
+                    <li class="h-full">
+                        <a href="app.html"
+                            class="h-full flex items-center justify-center px-4 bg-labSecondary/60 font-bold transition-all duration-200">场景应用</a>
+                    </li>
+                    <li class="h-full">
+                        <a href="join.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">加入我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="h-20"></div>
+
+    <!-- ====================================== -->
+    <!-- 场景应用页面内容 -->
+    <!-- ====================================== -->
+    <section class="py-10 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+
+            <!-- 标题区域 -->
+            <h2
+                class="text-3xl font-bold text-gray-800 pb-2 mb-10 text-center flex items-center justify-center gap-3 mt-10 mb-10">
+                <!-- 左侧横线 -->
+                <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+
+                <!-- 图标 + 中文 + 英文 垂直排列 -->
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-labPrimary"></i>
+                        <span>场景应用</span>
+                    </div>
+                    <span class="text-lg font-normal text-gray-500 mt-1"
+                        style="font-family: Arial, Helvetica, sans-serif;letter-spacing: 0.1em;">APPLICATION
+                        SCENARIOS</span>
+                </div>
+
+                <!-- 右侧横线 -->
+                <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+            </h2>
+
+            <!-- 应用卡片列表 -->
+            <div id="app-container">
+                <!-- 这里会由JS自动填充卡片 -->
+                <div class="text-center text-gray-500 py-10">加载中...</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2026 厦门大学能源智能计算课题组 版权所有</p>
+            <p class="text-sm text-gray-400 mt-2">
+                <i class="fa-solid fa-location-dot mr-2"></i>通讯地址：厦门大学（翔安校区）西部片区信息学院5号楼
+                <span class="mx-2">|</span>
+                <i class="fa-solid fa-envelope mr-2"></i>加入我们：zhihong@xmu.edu.cn（张志宏老师）
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 从 app.json 加载场景应用数据
+        async function loadApplications() {
+            const container = document.getElementById('app-container');
+            try {
+                const res = await fetch('app.json');
+                const apps = await res.json();
+
+                let html = '';
+                for (const app of apps) {
+                    let mediaHtml = '';
+                    if (app.video) {
+                        mediaHtml = `
+                    <div class="aspect-video w-full bg-gray-100 rounded overflow-hidden">
+                        <video src="${app.video}" controls class="w-full h-full object-cover"></video>
+                    </div>`;
+                    } else if (app.photo) {
+                        mediaHtml = `
+                    <div class="w-full rounded overflow-hidden border border-gray-100">
+                        <img src="${app.photo}" class="w-full h-auto object-contain">
+                    </div>`;
+                    }
+
+                    html += `
+                <div class="bg-white mb-20">
+                    <h3 class="text-2xl font-bold text-labPrimary mt-5 mb-4 pl-4 border-l-4 border-labPrimary">
+                    ${app.title}
+                    </h3>
+                    <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                        ${app.desc}
+                    </p>
+                    ${mediaHtml}
+                </div>
+            `;
+                }
+
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = '<div class="text-center text-red-500 py-10">加载失败</div>';
+                console.error(err);
+            }
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadApplications);
+    </script>
+
+</body>
+
+</html>

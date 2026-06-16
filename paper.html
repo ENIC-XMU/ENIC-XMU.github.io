@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科研成果 - 能源智能计算课题组@XMU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        labPrimary: '#1e40af',
+                        labSecondary: '#3b82f6',
+                        labNeutral: '#f3f4f6',
+                    },
+                    // 全局 Georgia 字体
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans text-gray-800 bg-white min-h-screen flex flex-col">
+    <!-- 顶部导航栏（无修改） -->
+    <nav class="fixed top-0 left-0 w-full bg-gradient-to-b from-labPrimary to-blue-900 text-white shadow-md z-50 h-20">
+        <div class="container mx-auto px-4 h-full max-w-6xl">
+            <div class="flex justify-between items-center h-full">
+                <div class="text-3xl flex items-center">
+                    <!-- 校徽图片 -->
+                    <img src="xmu-logo.png" class="h-10 w-auto">
+
+                    <!-- 白色竖线分割符（核心） -->
+                    <div class="h-8 w-0.5 bg-white mx-4"></div>
+
+                    <!-- 文字+闪电图标 -->
+                    <span class="text-lg text-center mt-1" style="line-height: 1.3;">能源智能计算课题组 (ENIC Lab)<br><span class="text-base" style="letter-spacing: 0.05em;">ENergy Intelligent Computing Lab</span></span>
+                </div>
+                <!-- 关键1：去掉所有间隙，让LI紧密相连 -->
+                <ul class="flex h-full text-lg">
+                    <li class="h-full">
+                        <a href="index.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            首页
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="news.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            最新资讯
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="team.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            学术团队
+                        </a>
+                    </li>
+                    <!-- 选中状态：高亮+底部边框+加粗 -->
+                    <li class="h-full">
+                        <a href="paper.html"
+                            class="h-full flex items-center justify-center px-4 bg-labSecondary/60 font-bold transition-all duration-200">
+                            科研成果
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="app.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            场景应用
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="join.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            加入我们
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 顶部占位：因导航栏固定，避免内容被遮挡 -->
+    <div class="h-20"></div>
+
+
+
+    <!-- 论文列表（无分页，全部展示） -->
+    <section class="py-10 flex-grow">
+        <h2
+            class="text-3xl font-bold text-gray-800 pb-2 mb-10 text-center flex items-center justify-center gap-3 mt-10 mb-10">
+            <!-- 左侧横线 -->
+            <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+
+            <!-- 图标 + 中文 + 英文 垂直排列 -->
+            <div class="flex flex-col items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-flask-vial text-labPrimary"></i>
+                    <span>科研成果</span>
+                </div>
+                <span class="text-lg font-normal text-gray-500 mt-1"
+                    style="font-family: Arial, Helvetica, sans-serif;letter-spacing: 0.1em;">RESEARCH
+                    ACHIEVEMENTS</span>
+            </div>
+
+            <!-- 右侧横线 -->
+            <span class="flex-1 h-[2px] bg-gray-300 max-w-[100px]"></span>
+        </h2>
+        <div class="container mx-auto px-4 max-w-6xl mb-10">
+            <div id="paper-list-container">
+                <div class="text-center text-gray-500 py-10">加载论文列表中...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2026 厦门大学能源智能计算课题组 版权所有</p>
+            <p class="text-sm text-gray-400 mt-2">
+                <i class="fa-solid fa-location-dot mr-2"></i>通讯地址：厦门大学（翔安校区）西部片区信息学院5号楼
+                <span class="mx-2">|</span>
+                <i class="fa-solid fa-envelope mr-2"></i>加入我们：zhihong@xmu.edu.cn（张志宏老师）
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let allPaperData = [];
+        let activeTag = 'all';
+        let activeYear = 'all';
+
+        const ALLOWED_TAGS = [
+            { value: 'GNN', label: 'GNN (图神经网络)' },
+            { value: 'RAG', label: 'RAG (检索增强生成)' },
+            { value: 'AI4Science', label: 'AI4Science (科学智能)' },
+            { value: 'Other', label: 'Other（包括：图像、语音、时间序列等）' }
+        ];
+
+        const tagColorMap = {
+            "RAG": { bg: "bg-blue-100", text: "text-blue-700" },
+            "AI4Science": { bg: "bg-green-100", text: "text-green-700" },
+            "GNN": { bg: "bg-purple-100", text: "text-purple-700" },
+            "Other": { bg: "bg-gray-100", text: "text-gray-700" },
+            "all": { bg: "bg-gray-100", text: "text-gray-700" }
+        };
+
+        // 渲染标签筛选
+        function renderFilterTags() {
+            let filterHtml = `<div class="flex flex-wrap gap-2 mb-3">`;
+            filterHtml += `
+            <button onclick="filterByTag('all')" 
+                class="px-3 py-1 rounded text-sm font-bold cursor-pointer transition-all
+                ${activeTag === 'all' ? 'bg-gray-200 ring-2 ring-gray-400' : tagColorMap.all.bg + ' ' + tagColorMap.all.text}">
+                全部标签
+            </button>
+        `;
+            ALLOWED_TAGS.forEach(tag => {
+                const style = tagColorMap[tag.value];
+                filterHtml += `
+                <button onclick="filterByTag('${tag.value}')" 
+                    class="px-3 py-1 rounded text-sm font-bold cursor-pointer transition-all
+                    ${activeTag === tag.value ? 'ring-2 ring-gray-400' : ''} ${style.bg} ${style.text}">
+                    ${tag.label}
+                </button>
+            `;
+            });
+            filterHtml += `</div>`;
+            return filterHtml;
+        }
+
+        // 动态获取并排序年份选项
+        function getYearOptions() {
+            const yearSet = new Set();
+            allPaperData.forEach(p => {
+                if (p.year) {
+                    const y = Number(p.year);
+                    if (y <= 2022) {
+                        yearSet.add('2022_before');
+                    } else {
+                        yearSet.add(y.toString());
+                    }
+                }
+            });
+
+            const years = Array.from(yearSet);
+            const normalYears = years
+                .filter(y => y !== '2022_before')
+                .map(y => Number(y))
+                .sort((a, b) => b - a); // 最新在前
+
+            const options = normalYears.map(y => ({
+                value: y.toString(),
+                label: `${y}年`
+            }));
+
+            if (yearSet.has('2022_before')) {
+                options.push({
+                    value: '2022_before',
+                    label: '2022年及以前'
+                });
+            }
+
+            return options;
+        }
+
+        // 渲染年份筛选
+        function renderFilterYears() {
+            const yearOptions = getYearOptions();
+            let yearHtml = `<div class="flex flex-wrap gap-2 mb-8">`;
+            yearHtml += `
+            <button onclick="filterByYear('all')" 
+                class="px-3 py-1 rounded text-sm font-bold cursor-pointer transition-all
+                ${activeYear === 'all' ? 'bg-gray-200 ring-2 ring-gray-400' : 'bg-gray-100 text-gray-700'}">
+                全部年份
+            </button>
+        `;
+            yearOptions.forEach(year => {
+                yearHtml += `
+                <button onclick="filterByYear('${year.value}')" 
+                    class="px-3 py-1 rounded text-sm font-bold cursor-pointer transition-all
+                    ${activeYear === year.value ? 'ring-2 ring-gray-400' : 'bg-gray-100 text-gray-700'}">
+                    ${year.label}
+                </button>
+            `;
+            });
+            yearHtml += `</div>`;
+            return yearHtml;
+        }
+
+        function filterByTag(tag) {
+            activeTag = tag;
+            renderAllPapers();
+        }
+
+        function filterByYear(year) {
+            activeYear = year;
+            renderAllPapers();
+        }
+
+        function getPaperCoreTag(paper) {
+            if (!paper.tag) return 'Other';
+            const tags = paper.tag.split(',').map(t => t.trim());
+            if (tags.includes('GNN')) return 'GNN';
+            if (tags.includes('RAG')) return 'RAG';
+            if (tags.includes('AI4Science')) return 'AI4Science';
+            return 'Other';
+        }
+
+        function getPaperYearGroup(paper) {
+            if (!paper.year) return null;
+            const y = Number(paper.year);
+            return y <= 2022 ? '2022_before' : y.toString();
+        }
+
+        // 渲染论文
+        function renderAllPapers() {
+            const container = document.getElementById('paper-list-container');
+            if (allPaperData.length === 0) {
+                container.innerHTML = `<div class="text-center text-gray-500 py-10">暂无发表论文</div>`;
+                return;
+            }
+
+            // 双重筛选
+            let filteredData = allPaperData.filter(p => {
+                const tagOk = activeTag === 'all' || getPaperCoreTag(p) === activeTag;
+                const paperYearGroup = getPaperYearGroup(p);
+                const yearOk = activeYear === 'all' || paperYearGroup === activeYear;
+                return tagOk && yearOk;
+            });
+
+            let html = renderFilterTags() + renderFilterYears();
+            html += `
+        <div>
+            <ul class="space-y-4 list-disc">
+                ${filteredData.length === 0 ? '<li class="text-gray-500">暂无匹配论文</li>' :
+                    filteredData.map((p) => {
+                        const coreTag = getPaperCoreTag(p);
+                        const unifiedStyle = tagColorMap[coreTag];
+                        const tags = p.tag ? p.tag.split(',').map(t => t.trim()) : ['无标签'];
+                        const tagHtml = tags.map(tag =>
+                            `<span class="${unifiedStyle.bg} ${unifiedStyle.text} px-2 py-0.5 rounded text-sm mr-1 font-bold">${tag}</span>`
+                        ).join('');
+
+                        return `
+                    <li class="leading-relaxed text-justify" style="letter-spacing: 0.6px;">
+                        ${tagHtml}
+                        ${p.author || '未知作者'}.
+                        <span class="font-bold">${p.title || '无标题'}.</span>
+                        ${p.published || ''}.
+                        <span class="text-labPrimary font-bold">
+                            ${p.publishedIn || '未知期刊/会议'}.
+                        </span>
+                        <span
+                        class="${p.desc?.includes('CCF-A') || p.desc?.includes('JCR Q1') || p.desc?.includes('Award')
+                                ? 'text-red-500'
+                                : p.desc?.includes('CCF-B') || p.desc?.includes('JCR Q2')
+                                    ? 'text-green-800'
+                                    : 'text-black'
+                            } font-bold"
+                        >
+                        ${p.desc ? `(${p.desc})` : ''}
+                        </span>
+                    </li>
+                    `;
+                    }).join('')}
+            </ul>
+        </div>
+        `;
+            container.innerHTML = html;
+        }
+
+        // 加载数据
+        async function loadPapers() {
+            const container = document.getElementById('paper-list-container');
+            try {
+                const res = await fetch('paper.json');
+                if (!res.ok) throw new Error(`加载失败，状态码：${res.status}`);
+                allPaperData = await res.json();
+                renderAllPapers();
+            } catch (err) {
+                container.innerHTML = `<div class="text-center text-red-500 py-10">论文加载失败：${err.message}</div>`;
+                console.error(err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPapers);
+    </script>
+</body>
+
+</html>
