@@ -1,5 +1,5 @@
 ---
-title: 课题组1篇论文被人工智能顶会ICLR'2026接收
+title: 课题组1篇论文被机器学习三大会ICLR'2026接收
 date: 2026-01-27
 tag: 论文发表
 abstract: 祝贺课题组石伟宁、温志森在ICLR'2026上发表动态图演化工作！ICLR会议全称为International Conference on Learning Representations（国际学习表征会议），是人工智能顶级学术会议（CCF-A类），与NeurIPS、ICML并称为机器学习三大顶级会议。
