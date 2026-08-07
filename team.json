@@ -85,6 +85,14 @@
         "tag": "国家电网"
     },
     {
+        "person_id": "zhenhan_chen",
+        "type": "phd",
+        "photo": "photos/zhenhan_chen.jpg",
+        "name_zh": "陈振涵",
+        "name_en": "Zhenhan CHEN",
+        "desc": "2026级专业型博士"
+    },
+    {
         "person_id": "yueyang_liu",
         "type": "master",
         "photo": "photos/yueyang_liu.jpg",
