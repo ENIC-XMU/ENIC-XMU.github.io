@@ -233,6 +233,14 @@
         "tag": "国家电网"
     },
     {
+        "person_id": "shan_mo",
+        "type": "master",
+        "photo": "photos/shan_mo.jpg",
+        "name_zh": "莫山",
+        "name_en": "Shan MO",
+        "desc": "2026级专业型硕士"
+    },
+    {
         "person_id": "xiaoyan_xie",
         "type": "master",
         "photo": "photos/xiaoyan_xie.jpg",
