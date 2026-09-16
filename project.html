@@ -117,46 +117,22 @@
 
     <script>
         function renderProjectDetails(details) {
-            const statusHtml = details.slice(4).map(status => `
-                <span class="inline-block flex-shrink-0 whitespace-nowrap bg-blue-100 text-labPrimary text-sm font-bold rounded px-2 py-0.5">${status}</span>
-            `).join('');
-            // 合作项目仅有来源与职责；科研项目另含经费、周期和可选结题状态。
-            const rows = details.length > 2
-                ? [
-                    { icon: 'fa-coins', label: '经费', value: details[1] },
-                    { icon: 'fa-calendar-days', label: '周期', value: details[2] },
-                    { icon: 'fa-user', label: '职责', value: details[3] }
-                ]
-                : [{ icon: 'fa-user', label: '职责', value: details[1] }];
-
-            return rows.filter(row => row.value).map(row => `
-                <div class="flex items-center gap-2 min-h-5 leading-5">
-                    <span class="w-4 h-5 flex-shrink-0 inline-flex items-center justify-center" aria-hidden="true">
-                        <i class="fa-solid ${row.icon} leading-none"></i>
-                    </span>
-                    <span><span class="sr-only">${row.label}：</span>${row.value}</span>
-                    ${row.label === '职责' ? statusHtml : ''}
-                </div>
-            `).join('');
+            return details.map(detail => `<span>${detail}</span>`).join(`
+                <span class="text-gray-300" aria-hidden="true">|</span>
+            `);
         }
 
         function renderProjectCard(project) {
             const icon = project.icon || 'fa-circle';
-            const details = project.details || [];
             return `
-                <article class="w-full bg-white border border-gray-200 rounded-lg shadow-sm px-5 py-3.5 flex flex-col lg:flex-row lg:items-center gap-4 hover:shadow-md transition-shadow duration-300">
-                    <div class="flex items-start gap-4 flex-1 min-w-0">
-                        <span class="w-10 h-10 rounded-full bg-labPrimary/10 text-labPrimary flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
-                            <i class="fa-solid ${icon} text-lg"></i>
-                        </span>
-                        <div class="min-w-0">
-                            <h3 class="text-xl font-bold text-gray-800 leading-snug mb-1">${project.title}</h3>
-                            <p class="text-base text-gray-500 leading-tight">${details[0] || ''}</p>
-                        </div>
-                    </div>
-                    <div class="lg:w-80 lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l border-gray-200 pt-3 lg:pt-0 lg:pl-10 text-base text-gray-500 leading-tight">
-                        <div class="space-y-0.5">
-                            ${renderProjectDetails(details)}
+                <article class="w-full bg-white border border-gray-200 rounded-lg shadow-sm px-5 py-4 flex items-start gap-4 hover:shadow-md transition-shadow duration-300">
+                    <span class="w-10 h-10 rounded-full bg-labPrimary/10 text-labPrimary flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+                        <i class="fa-solid ${icon} text-lg"></i>
+                    </span>
+                    <div class="min-w-0">
+                        <h3 class="text-xl font-bold text-gray-800 leading-snug mb-1">${project.title}</h3>
+                        <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-base text-gray-500 leading-tight">
+                            ${renderProjectDetails(project.details || [])}
                         </div>
                     </div>
                 </article>
