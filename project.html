@@ -117,6 +117,9 @@
 
     <script>
         function renderProjectDetails(details) {
+            const statusHtml = details.slice(4).map(status => `
+                <span class="inline-block flex-shrink-0 whitespace-nowrap bg-blue-100 text-labPrimary text-sm font-bold rounded px-2 py-0.5">${status}</span>
+            `).join('');
             // 合作项目仅有来源与职责；科研项目另含经费、周期和可选结题状态。
             const rows = details.length > 2
                 ? [
@@ -127,9 +130,10 @@
                 : [{ icon: 'fa-user', label: '职责', value: details[1] }];
 
             return rows.filter(row => row.value).map(row => `
-                <div class="flex items-start gap-2">
+                <div class="flex items-center gap-2">
                     <i class="fa-solid ${row.icon} w-4 text-center mt-0.5" aria-hidden="true"></i>
                     <span><span class="sr-only">${row.label}：</span>${row.value}</span>
+                    ${row.label === '职责' ? statusHtml : ''}
                 </div>
             `).join('');
         }
@@ -137,9 +141,6 @@
         function renderProjectCard(project) {
             const icon = project.icon || 'fa-circle';
             const details = project.details || [];
-            const statusHtml = details.slice(4).map(status => `
-                <span class="inline-block flex-shrink-0 whitespace-nowrap bg-blue-100 text-labPrimary text-base font-bold rounded px-2 py-1">${status}</span>
-            `).join('');
             return `
                 <article class="w-full bg-white border border-gray-200 rounded-lg shadow-sm px-5 py-4 flex flex-col lg:flex-row lg:items-center gap-4 hover:shadow-md transition-shadow duration-300">
                     <div class="flex items-start gap-4 flex-1 min-w-0">
@@ -151,11 +152,10 @@
                             <p class="text-base text-gray-500 leading-tight">${details[0] || ''}</p>
                         </div>
                     </div>
-                    <div class="lg:w-80 lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l border-gray-200 pt-3 lg:pt-0 lg:pl-5 flex flex-wrap items-center gap-3 text-base text-gray-500 leading-tight">
-                        <div class="space-y-1 flex-1">
+                    <div class="lg:w-80 lg:flex-shrink-0 border-t lg:border-t-0 lg:border-l border-gray-200 pt-3 lg:pt-0 lg:pl-10 text-base text-gray-500 leading-tight">
+                        <div class="space-y-1">
                             ${renderProjectDetails(details)}
                         </div>
-                        ${statusHtml}
                     </div>
                 </article>
             `;
