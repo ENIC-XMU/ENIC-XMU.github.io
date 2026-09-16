@@ -34,7 +34,7 @@
     <nav class="fixed top-0 left-0 w-full bg-gradient-to-b from-labPrimary to-blue-900 text-white shadow-md z-50 h-20">
         <div class="container mx-auto px-4 h-full max-w-6xl">
             <div class="flex justify-between items-center h-full">
-                <div class="text-3xl flex items-center">
+                <div class="hidden xl:flex text-3xl items-center">
                     <!-- 校徽图片 -->
                     <img src="xmu-logo.png" class="h-10 w-auto">
 
@@ -42,13 +42,13 @@
                     <div class="h-8 w-0.5 bg-white mx-4"></div>
 
                     <!-- 文字+闪电图标 -->
-                    <span class="text-lg text-center mt-1" style="line-height: 1.3;">能源智能计算课题组 (ENIC Lab)<br><span
+                    <span class="text-lg text-center mt-1" style="line-height: 1.3; white-space: nowrap;">能源智能计算课题组 (ENIC Lab)<br><span
                             class="text-base" style="letter-spacing: 0.05em;">ENergy Intelligent Computing
                             Lab</span></span>
 
                 </div>
                 <!-- 关键1：去掉所有间隙，让LI紧密相连 -->
-                <ul class="flex h-full text-lg">
+                <ul class="flex h-full w-full xl:w-auto justify-center text-[17px] whitespace-nowrap [&>li>a]:px-2">
                     <li class="h-full">
                         <a href="index.html"
                             class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
@@ -65,6 +65,12 @@
                         <a href="team.html"
                             class="h-full flex items-center justify-center px-4 bg-labSecondary/60 font-bold transition-all duration-200">
                             学术团队
+                        </a>
+                    </li>
+                    <li class="h-full">
+                        <a href="project.html"
+                            class="h-full flex items-center justify-center px-4 hover:bg-labSecondary/60 transition-all duration-200">
+                            代表项目
                         </a>
                     </li>
                     <li class="h-full">

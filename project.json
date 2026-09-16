@@ -1,0 +1,73 @@
+[
+  {
+    "category": "国家级科研项目",
+    "category_en": "NATIONAL RESEARCH PROJECTS",
+    "icon": "fa-landmark",
+    "projects": [
+      {
+        "title": "基于多目标动态图学习的电解液配方设计与优化研究",
+        "icon": "fa-flask-vial",
+        "details": ["国家自然科学基金面上项目", "50 万", "2027.01–2030.12", "主持"]
+      },
+      {
+        "title": "面向可重构电池网络储能系统的动态图学习理论研究",
+        "icon": "fa-car-battery",
+        "details": ["国家自然科学基金面上项目", "57 万", "2022.01–2025.12", "主持"]
+      },
+      {
+        "title": "基于边云协同的区域能源互联网优化运行智能理论与关键技术",
+        "icon": "fa-network-wired",
+        "details": ["国家自然科学基金智能电网联合基金重点支持项目", "254 万", "2021.01–2024.12", "课题负责人", "优秀结题"]
+      }
+    ]
+  },
+  {
+    "category": "重大科技计划项目",
+    "category_en": "MAJOR SCIENCE AND TECHNOLOGY PROGRAMS",
+    "icon": "fa-gears",
+    "projects": [
+      {
+        "title": "基于多模态知识增强生成式大模型与智能代理的电力生产安全管控关键技术研究及产业化",
+        "icon": "fa-robot",
+        "details": ["厦门市重大科技计划项目", "750 万", "2024.07–2026.12", "高校负责人"]
+      },
+      {
+        "title": "基于源网荷储一体化的数字孪生关键技术研究及产业化",
+        "icon": "fa-industry",
+        "details": ["厦门市重大科技计划项目", "500 万", "2022.07–2024.12", "高校负责人"]
+      }
+    ]
+  },
+  {
+    "category": "产学研合作项目",
+    "category_en": "INDUSTRY-UNIVERSITY-RESEARCH COLLABORATION PROJECTS",
+    "icon": "fa-handshake",
+    "projects": [
+      {
+        "title": "基于“车-桩”充电引导与“桩-网”协同优化下的“车-桩-网”深度耦合研究",
+        "icon": "fa-charging-station",
+        "details": ["国家电网", "主持"]
+      },
+      {
+        "title": "智慧能源大数据关键技术研究",
+        "icon": "fa-database",
+        "details": ["科华数能", "主持"]
+      },
+      {
+        "title": "基于检索增强与图文特征融合的设备技术档案关键技术研究及应用",
+        "icon": "fa-file-circle-check",
+        "details": ["国家电网", "主持"]
+      },
+      {
+        "title": "基于知识-数据双驱动事件图谱的配网智能决策关键技术研究",
+        "icon": "fa-diagram-project",
+        "details": ["国家电网", "主持"]
+      },
+      {
+        "title": "面向电力物联网营配业务的云边协同智能安全分析技术研究",
+        "icon": "fa-cloud-bolt",
+        "details": ["国家电网", "主持"]
+      }
+    ]
+  }
+]
