@@ -1,5 +1,27 @@
 [
     {
+        "id": 34,
+        "author": "Jingwei Hu, Jiasong Chen, Zheng Fang, <span class=\"font-bold text-labPrimary\">Zhihong Zhang</span>",
+        "title": "DGRAF: Observation-Quality-Aware Reinforcement Learning for Dynamic Reconfigurable Batteries",
+        "published": "The Fortieth Annual Conference on Neural Information Processing Systems",
+        "publishedIn": "NeurIPS 2026",
+        "tag": "AI4Science, Energy Storage",
+        "link": "",
+        "desc": "CCF-A",
+        "year": "2026"
+    },
+    {
+        "id": 35,
+        "author": "Yantong Zhu, Weining Shi, Keyi Li, Xiaoyan Xie, Yi Chang, Qinggang Zhang, Tianjiao Pu, Ji Qiao, and <span class=\"font-bold text-labPrimary\">Zhihong Zhang</span>",
+        "title": "WavCIL: Wavelet Coefficient-Domain Invariant Learning for Dynamic Graph OOD Generalization",
+        "published": "In Proceedings of the 40th Annual Conference on Neural Information Processing Systems",
+        "publishedIn": "NeurIPS 2026",
+        "tag": "GNN, Dynamic Graph",
+        "link": "",
+        "desc": "CCF-A",
+        "year": "2026"
+    },
+    {
         "id": 1,
         "author": "Qichuan Liu+, Qinggang Zhang+, Yuxuan Hu, Chenfeng Zheng, Zerui Chen, Chentao Zhang, <span class=\"font-bold text-labPrimary\">Zhihong Zhang*</span>",
         "title": "From Retrieval to Translation: Translating Query into Graph-level Clues for Retrieval-Augmented Generation",
