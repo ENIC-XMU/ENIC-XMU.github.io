@@ -8,3 +8,5 @@ abstract: 由厦门大学能源智能计算课题组负责人张志宏副教授�
 
 附：2025年度福建省科学技术进步奖获奖名单
 ![huojiangmingdan](news/261103/featured.jpg)
+
+# 审核：张志宏
