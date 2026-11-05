@@ -1,0 +1,77 @@
+/* 干净背景不含文字和边框；标题和按钮独立渲染，保证清晰。 */
+.admissions-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+    min-height: 148px;
+    overflow: hidden;
+    padding: 16px 4.5% 42px 6%;
+    border: 1px solid #b9cde9;
+    border-radius: 14px;
+    /* 保持校园建筑原比例，只裁切上方空白，不把整张背景压进横幅。 */
+    background-color: #f2f7fd;
+    background-image: url('admissions-banner-background.png');
+    background-size: 100% auto;
+    background-position: center calc(100% + 48px);
+    background-repeat: no-repeat;
+    text-decoration: none;
+}
+
+.admissions-banner-title {
+    margin: 0 0 3px;
+    color: #10377a;
+    font-family: 'Noto Serif SC', 'STZhongsong', 'Songti SC', SimSun, serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: 0.06em;
+}
+
+.admissions-banner-description {
+    margin: 0;
+    color: #25334a;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.admissions-banner-action {
+    flex-shrink: 0;
+    padding: 7px 28px;
+    border-radius: 999px;
+    background: linear-gradient(#1c5cbb, #06368b);
+    box-shadow: inset 0 1px 0 #ffffff40;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+
+    transform: translateY(-8px); /* 按钮向上移动10px */
+}
+
+.admissions-banner:hover .admissions-banner-action {
+    background: linear-gradient(#246bd1, #10479e);
+}
+
+@media (max-width: 639px) {
+    .admissions-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 20px 22px 30px;
+        background-position: center bottom;
+    }
+
+    .admissions-banner-title {
+        font-size: 25px;
+    }
+}
+
+.admissions-banner:focus-visible {
+    outline: 2px solid #1e40af;
+    outline-offset: 4px;
+}
